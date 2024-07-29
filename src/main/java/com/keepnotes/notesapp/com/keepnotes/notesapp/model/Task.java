@@ -1,29 +1,31 @@
-package com.keepnotes.notesapp.entity;
+package com.keepnotes.notesapp.com.keepnotes.notesapp.model;
 
-import jakarta.persistence.*;
+import java.time.LocalDate;
 
-@Entity
-@Table(name = "task")
 public class Task {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long id;
+    private int id;
     private String assignedTo;
-
-    private String createdAt;
+    private LocalDate createdAt;
     private String desc;
     private String priority;
     private String status;
     private String title;
 
-    public Task(String assignedTo, String createdAt, String desc, String priority, String status, String title) {
+    public Task(String assignedTo, LocalDate createdAt, String desc, String priority, String status, String title) {
         this.assignedTo = assignedTo;
         this.createdAt = createdAt;
         this.desc = desc;
         this.priority = priority;
         this.status = status;
         this.title = title;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getAssignedTo() {
@@ -34,11 +36,11 @@ public class Task {
         this.assignedTo = assignedTo;
     }
 
-    public String getCreatedAt() {
+    public LocalDate getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(LocalDate createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -72,5 +74,18 @@ public class Task {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", assignedTo='" + assignedTo + '\'' +
+                ", createdAt=" + createdAt +
+                ", desc='" + desc + '\'' +
+                ", priority='" + priority + '\'' +
+                ", status='" + status + '\'' +
+                ", title='" + title + '\'' +
+                '}';
     }
 }
