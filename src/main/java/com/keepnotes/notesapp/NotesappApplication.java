@@ -19,12 +19,6 @@ public class NotesappApplication {
 		SpringApplication.run(NotesappApplication.class, args);
 	}
 
-	@GetMapping()
 
-	public List<Task> hello() {
-		return List.of(
-				new Task("Jayan", LocalDate.of(2024, Month.JULY,24),"Loremipsum20","high","Pending","Do it today")
-		);
-	}
 
 }

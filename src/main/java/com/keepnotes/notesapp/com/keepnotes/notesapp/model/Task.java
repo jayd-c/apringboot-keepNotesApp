@@ -1,8 +1,15 @@
 package com.keepnotes.notesapp.com.keepnotes.notesapp.model;
 
-import java.time.LocalDate;
+import jakarta.persistence.*;
 
+import java.time.LocalDate;
+//this @Entity for hibernate
+@Entity
+//@Table to create a table in database (@Table(name="your name" if you want to change the default name)
+@Table(name = "tasks")
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String assignedTo;
     private LocalDate createdAt;
