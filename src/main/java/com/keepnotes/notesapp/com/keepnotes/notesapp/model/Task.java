@@ -3,36 +3,46 @@ package com.keepnotes.notesapp.com.keepnotes.notesapp.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-//this @Entity for hibernate
 @Entity
-//@Table to create a table in database (@Table(name="your name" if you want to change the default name)
-@Table(name = "tasks")
+@Table(name = "task")
 public class Task {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private String taskCode;
     private String assignedTo;
-    private LocalDate createdAt;
-    private String desc;
+    private String createdAt;
+    private String description;
     private String priority;
     private String status;
     private String title;
 
-    public Task(String assignedTo, LocalDate createdAt, String desc, String priority, String status, String title) {
+    public Task() {
+    }
+
+    public Task(String taskCode, String assignedTo, String createdAt, String description, String priority, String status, String title) {
+        this.taskCode = taskCode;
         this.assignedTo = assignedTo;
         this.createdAt = createdAt;
-        this.desc = desc;
+        this.description = description;
         this.priority = priority;
         this.status = status;
         this.title = title;
     }
 
-    public int getId() {
-        return id;
+    public Task(String assignedTo, String createdAt, String description, String priority, String status, String title) {
+        this.assignedTo = assignedTo;
+        this.createdAt = createdAt;
+        this.description = description;
+        this.priority = priority;
+        this.status = status;
+        this.title = title;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getTaskCode() {
+        return taskCode;
+    }
+
+    public void setTaskCode(String taskCode) {
+        this.taskCode = taskCode;
     }
 
     public String getAssignedTo() {
@@ -43,20 +53,20 @@ public class Task {
         this.assignedTo = assignedTo;
     }
 
-    public LocalDate getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(LocalDate createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescription(String desc) {
+        this.description = desc;
     }
 
     public String getPriority() {
@@ -86,10 +96,10 @@ public class Task {
     @Override
     public String toString() {
         return "Task{" +
-                "id=" + id +
+                "id=" + taskCode +
                 ", assignedTo='" + assignedTo + '\'' +
                 ", createdAt=" + createdAt +
-                ", desc='" + desc + '\'' +
+                ", desc='" + description + '\'' +
                 ", priority='" + priority + '\'' +
                 ", status='" + status + '\'' +
                 ", title='" + title + '\'' +
